@@ -1,2 +1,2 @@
-# LaInvencion
-Unreal Dev Project for FSSI REMOTE 2020- La Invenctión de Morel
+# Virtual Production Shell App
+Shell app for the TH138 Virtual Production class.
