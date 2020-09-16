@@ -13,3 +13,6 @@
 [submodule "Plugins/UE4-OSC"]
 	path = Plugins/UE4-OSC
 	url = https://github.com/bsubbaraman/UE4-OSC
+[submodule "Plugins/WebCameraFeed"]
+	path = Plugins/WebCameraFeed
+	url = https://github.com/bakjos/WebCameraFeed.git
