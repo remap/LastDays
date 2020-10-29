@@ -15,4 +15,4 @@
 	url = https://github.com/bakjos/WebCameraFeed.git
 [submodule "Plugins/VideoCore"]
 	path = Plugins/VideoCore
-	url = https://github.com/peetonn/VideoCore.git
+	url = https://github.com/remap/VideoCore.git
