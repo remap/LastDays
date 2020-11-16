@@ -38,6 +38,10 @@
 		{
 			"Name": "EditorTools",
 			"Enabled": true
+		},
+		{
+			"Name": "NDIIOPlugin",
+			"Enabled": true
 		}
 	]
 }
