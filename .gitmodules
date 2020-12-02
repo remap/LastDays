@@ -16,3 +16,6 @@
 [submodule "Plugins/VideoCore"]
 	path = Plugins/VideoCore
 	url = https://github.com/remap/VideoCore.git
+[submodule "Plugins/NDIIOPlugin"]
+	path = Plugins/NDIIOPlugin
+	url = https://github.com/remap/NDIIOPlugin.git
