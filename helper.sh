@@ -5,7 +5,7 @@ arg="$1"
 function showPopup()
 {
     popupMsg=$1
-    osascript -e "display notification \"$popupMsg\" with title \"LaInvencion Helper\""
+    osascript -e "display notification \"$popupMsg\" with title \"LastDays Helper\""
 }
 
 function goToRepo()
@@ -50,10 +50,10 @@ function cleanup()
 {
     goToRepo
     find . -name 'Intermediate' -exec rm -Rf {} \;
-    "/Users/Shared/Epic Games/UE_4.23/Engine/Build/BatchFiles/Mac/GenerateProjectFiles.sh" `pwd`/LaInvencion.uproject
+    "/Users/Shared/Epic Games/UE_4.23/Engine/Build/BatchFiles/Mac/GenerateProjectFiles.sh" `pwd`/LastDays.uproject
     git submodule init
     git submodule update --recursive
-    xcodebuild -workspace LaInvencion.xcworkspace -scheme LaInvencion
+    xcodebuild -workspace LastDays.xcworkspace -scheme LastDays
     if [ $? -eq 0 ]; then
         showPopup "Cleaned up!"
     else
@@ -69,7 +69,7 @@ function showLatest()
     latestCommit=`git log -1 --pretty=%B`
     msg="Branch: $branch. Latest: $commit: $latestCommit"
     showPopup "$msg"
-    # osascript -e "display notification \"$msg\" with title \"LaInvencion Helper\""
+    # osascript -e "display notification \"$msg\" with title \"LastDays Helper\""
 }
 
 case $arg in
