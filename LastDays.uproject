@@ -42,6 +42,18 @@
 		{
 			"Name": "NDIIOPlugin",
 			"Enabled": false
+		},
+		{
+			"Name": "VirtualProductionUtilities",
+			"Enabled": true
+		},
+		{
+			"Name": "VirtualCamera",
+			"Enabled": true
+		},
+		{
+			"Name": "Takes",
+			"Enabled": true
 		}
 	]
 }
