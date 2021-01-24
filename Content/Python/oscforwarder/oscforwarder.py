@@ -29,8 +29,15 @@ if <args> is omitted, first arg is dropped
 
 
 
+
+
 """
 
+# Assume python 3
+import sys
+if sys.version_info < (3, 0):
+	print("Requires Python 3.") 
+	sys.exit(0)
 
 from datetime import datetime
 import argparse
@@ -42,6 +49,9 @@ from pythonosc import dispatcher
 from pythonosc import osc_server
 from pythonosc.udp_client import SimpleUDPClient
 
+
+
+
 globalArgs = None
 clients = {} 
 
@@ -50,7 +60,7 @@ clients = {}
 #
 def oscSend(host, port, addr, args):
 	print("out---- %s:%i" % (host, port))
-	print("        %s %s" % (addr, "" if len(args)==0 else args))	
+	print("        %s %s" % (addr, "" if len(args)==0 else " ".join(args)))	 # not showing the list explicitly makes it easier to cut and paste
 	try:
 		k = ":".join([host, str(port)])
 		if not k in clients:
@@ -71,8 +81,8 @@ def oscSend(host, port, addr, args):
 # Main handler
 #
 def fwd(addr, *args):
-	print("in-----", datetime.today().strftime('%y-%m-%d %H:%M:%S'))
-	print("       ", addr, args)
+	print("\nin-----", datetime.today().strftime('%y-%m-%d %H:%M:%S'))
+	print("       ", addr, " ".join([str(a) for a in args])) # makes it easier to cut and paste
 	try:
 		comps = addr.split()
 		cmd = comps[0].split("/")[1:]    # forwarder command
@@ -94,7 +104,9 @@ def fwd(addr, *args):
 				targetPort=int(hostcomps[1])
 			except:
 				print("bad port number", hostcomps[1])
-		if hostcomps[0]=="muskrat":      # show specific
+		if hostcomps[0]=="localhost":
+			targetHost="127.0.0.1"			# is this not defined in /etc/hosts anymore?
+		elif hostcomps[0]=="muskrat":      # show specific
 			targetHost="muskrat.remap.ucla.edu"
 		elif hostcomps[0]=="gopher":
 			targetHost="gopher.remap.ucla.edu"
@@ -128,15 +140,15 @@ def fwd(addr, *args):
 if __name__ == "__main__":
   parser = argparse.ArgumentParser()
   parser.add_argument("--ip",
-      default="", help="The ip to listen on")
+      default="", help="The ip to listen on. Default: all interfaces.")
   parser.add_argument("--listenport",
-      type=int, default=8061, help="The port to listen on")
+      type=int, default=8061, help="The port to listen on. Default: 8061")
   parser.add_argument("--sendport",
-      type=int, default=8060, help="The port to send on")
+      type=int, default=8060, help="The port to send on.  Default: 8060")
   parser.add_argument("--defaulthost",
-      type=str, default="localhost", help="The host to send to")
+      type=str, default="localhost", help="The default host to send to. Default: localhost")
   parser.add_argument("--test", '-t',
-      action='count', default=0, help="Print only, do not send")
+      action='count', default=0, help="Print rewriting only, do not send")
 
   globalArgs = parser.parse_args()
 
