@@ -122,7 +122,7 @@ def fwd(addr, *args):
 	except:
 		print("Problem building namedArgs")
 		return
-	oscSend(targetHost,targetPort, " ".join(comps[1:]+namedArgs), [])
+	oscSend(targetHost,targetPort, comps[1], comps[2:] + namedArgs)
 
 
 if __name__ == "__main__":
