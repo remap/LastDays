@@ -42,6 +42,10 @@
 		{
 			"Name": "NDIIOPlugin",
 			"Enabled": false
+		},
+		{
+			"Name": "VirtualCamera",
+			"Enabled": true
 		}
 	]
 }
