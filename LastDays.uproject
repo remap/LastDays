@@ -68,6 +68,11 @@
 			"SupportedTargetPlatforms": [
 				"Win64"
 			]
+		},
+		{
+			"Name": "VirtualCamera",
+			"Enabled": true
+
 		}
 	]
 }
