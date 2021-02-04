@@ -72,7 +72,10 @@
 		{
 			"Name": "VirtualCamera",
 			"Enabled": true
-
+		},
+		{
+			"Name": "PixelStreaming",
+			"Enabled": true
 		}
 	]
 }
